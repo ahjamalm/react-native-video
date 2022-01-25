@@ -25,7 +25,8 @@ import com.google.android.exoplayer2.text.TextRenderer;
 import com.google.android.exoplayer2.text.TextOutput;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.SubtitleView;
-
+import com.google.android.exoplayer2.text.CaptionStyleCompat;
+import android.graphics.Color;
 import java.util.List;
 
 @TargetApi(16)
@@ -77,7 +78,8 @@ public final class ExoPlayerView extends FrameLayout {
         subtitleLayout.setLayoutParams(layoutParams);
         subtitleLayout.setUserDefaultStyle();
         subtitleLayout.setUserDefaultTextSize();
-
+        subtitleLayout.setPadding(0, 0, 0, 130);
+        subtitleLayout.setStyle(new CaptionStyleCompat(Color.WHITE,Color.parseColor("#4D000000"), Color.TRANSPARENT, CaptionStyleCompat.EDGE_TYPE_NONE, Color.WHITE,null));
         updateSurfaceView();
 
         layout.addView(shutterView, 1, layoutParams);
