@@ -11,6 +11,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.graphics.Color;
 
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -23,6 +24,7 @@ import com.google.android.exoplayer2.text.Cue;
 import com.google.android.exoplayer2.text.TextRenderer;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.SubtitleView;
+import com.google.android.exoplayer2.text.CaptionStyleCompat;
 
 import java.util.List;
 
@@ -75,7 +77,11 @@ public final class ExoPlayerView extends FrameLayout {
         subtitleLayout.setLayoutParams(layoutParams);
         subtitleLayout.setUserDefaultStyle();
         subtitleLayout.setUserDefaultTextSize();
-
+        
+        subtitleLayout.setPadding(0, 0, 0, 80);
+        subtitleLayout.setStyle(new CaptionStyleCompat(Color.WHITE,
+                Color.parseColor("#4D000000"), Color.TRANSPARENT, CaptionStyleCompat.EDGE_TYPE_NONE, Color.WHITE,
+                null));
         updateSurfaceView();
 
         layout.addView(shutterView, 1, layoutParams);
